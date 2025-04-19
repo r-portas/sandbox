@@ -18,6 +18,11 @@ In theory this allows for more customization and flexibility, but some of the th
 - Do all the components bloat the codebase?
 - If a component is updated, how do you update it in your codebase?
 
+## Resources
+
+- [tweakcn](https://tweakcn.com): Generate shadcn/ui themes
+- [shadcnblocks](https://www.shadcnblocks.com): A collection of blocks for shadcn/ui
+
 ## Getting Started
 
 ```bash
@@ -44,7 +49,21 @@ Configuring `shadcn/ui` is fairly easy, theres a single line command (`bunx --bu
   - This defines a `baseColor` which is used to generate the default color palette, which _can't_ be changed after initialization, its not clear how this works though.
 - Creates a `lib/utils.ts` file, which contains a `cn` function that merges class names together
   - It seems to just combine `clsx` and `tailwind-merge` together?
+- Configures the theme in the `globals.css` file
+  - This is a useful reference to see what tokens are available
+
+## Tokens
+
+TODO
 
 ## Using Dark Mode as the default
 
-- Open the `globals.css` file and delete the `:root` class, then rename the `.dark` class to `:root`, the custom variant at the top can be deleted too.
+- ~~Open the `globals.css` file and delete the `:root` class, then rename the `.dark` class to `:root`, the custom variant at the top can be deleted too.~~
+  - This doesn't work as the `:root` class defines some non-color tokens, like the border radius
+- Add `className="dark` to the `html` tag in `layout.tsx`
+
+## Adding a component
+
+Adding a component is as simple as running a single line command
+
+## Adding a Block
