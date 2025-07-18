@@ -1,6 +1,6 @@
 # Sandbox
 
-> A place for experiments with new technologies
+My sandbox for exploring and experimenting with various technologies, languages, and tools.
 
 ## Getting Started
 
