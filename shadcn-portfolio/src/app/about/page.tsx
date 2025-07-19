@@ -16,38 +16,32 @@ const timelineData: TimelineEntry[] = Array.from({ length: 6 }).map(() => ({
 
 export default function AboutPage() {
   return (
-    <section className="bg-background py-32">
-      <div className="container">
-        <h1 className="text-foreground mb-10 text-center text-3xl font-bold tracking-tighter sm:text-6xl">
-          The History of Artificial Intelligence
-        </h1>
-        <div className="relative mx-auto max-w-4xl">
-          <Separator
-            orientation="vertical"
-            className="bg-muted absolute left-2 top-4"
-          />
-          {timelineData.map((entry, index) => (
-            <div key={index} className="relative mb-10 pl-8">
-              <div className="bg-foreground absolute left-0 top-3.5 flex size-4 items-center justify-center rounded-full" />
-              <h4 className="rounded-xl py-2 text-xl font-bold tracking-tight xl:mb-4 xl:px-3">
-                {entry.title}
-              </h4>
+    <section className="container mx-auto px-4 py-32">
+      <h1 className="text-foreground mb-10 text-center text-3xl font-bold tracking-tighter sm:text-6xl">
+        The History of Artificial Intelligence
+      </h1>
+      <div className="relative mx-auto max-w-4xl">
+        <Separator
+          orientation="vertical"
+          className="bg-muted absolute left-2 top-4"
+        />
+        {timelineData.map((entry, index) => (
+          <div key={index} className="relative mb-10 pl-8">
+            <div className="bg-foreground absolute left-0 top-3.5 flex size-4 items-center justify-center rounded-full" />
+            <h4 className="rounded-xl py-2 text-xl font-bold tracking-tight xl:mb-4 xl:px-3">
+              {entry.title}
+            </h4>
 
-              <h5 className="text-md -left-34 text-muted-foreground top-3 rounded-xl tracking-tight xl:absolute">
-                {entry.date}
-              </h5>
+            <h5 className="text-md -left-34 text-muted-foreground top-3 rounded-xl tracking-tight xl:absolute">
+              {entry.date}
+            </h5>
 
-              <Card className="my-5 border-none shadow-none">
-                <CardContent className="px-0 xl:px-2">
-                  <div
-                    className="prose dark:prose-invert text-foreground"
-                    dangerouslySetInnerHTML={{ __html: entry.content }}
-                  />
-                </CardContent>
-              </Card>
-            </div>
-          ))}
-        </div>
+            <p
+              className="prose dark:prose-invert text-foreground my-5"
+              dangerouslySetInnerHTML={{ __html: entry.content }}
+            />
+          </div>
+        ))}
       </div>
     </section>
   );
