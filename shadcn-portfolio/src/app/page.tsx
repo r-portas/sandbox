@@ -83,11 +83,7 @@ export default function Home() {
           </h2>
           <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
             {skills.map((skill, idx) => (
-              <Badge
-                key={idx}
-                variant="secondary"
-                className="text-sm py-2 px-4"
-              >
+              <Badge key={idx} variant="secondary">
                 {skill}
               </Badge>
             ))}
