@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import MainNav from "@/components/main-nav";
+import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
   title: "shadcn/ui portfolio",
@@ -12,21 +13,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <MainNav
-          items={[
-            {
-              label: "Home",
-              href: "/",
-            },
-            {
-              label: "About",
-              href: "/about",
-            },
-          ]}
-        />
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <MainNav
+            items={[
+              {
+                label: "Home",
+                href: "/",
+              },
+              {
+                label: "About",
+                href: "/about",
+              },
+            ]}
+          />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
