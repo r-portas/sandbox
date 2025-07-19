@@ -12,7 +12,7 @@ export default function Home() {
   const bio = faker.lorem.paragraph();
   const location = faker.location.city();
   const email = faker.internet.email();
-  const githubUsername = faker.internet.userName();
+  const githubUsername = faker.internet.username();
   const jobTitle = faker.person.jobTitle();
   const skills = Array.from({ length: 8 }, () => faker.hacker.noun());
   const projects = Array.from({ length: 4 }, () => ({
