@@ -31,7 +31,7 @@ export default function MainNav({
   const pathname = usePathname();
 
   return (
-    <nav className="flex flex-row items-center gap-1 p-2">
+    <nav className="flex flex-row items-center gap-2 p-2">
       <Button variant="ghost" asChild size="sm">
         <Link href="/" className="font-bold">
           shadcn/ui Portfolio

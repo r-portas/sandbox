@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import MainNav from "@/components/main-nav";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "shadcn/ui portfolio",
@@ -34,6 +35,7 @@ export default function RootLayout({
             ]}
           />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
