@@ -1,5 +1,4 @@
 import { faker } from "@faker-js/faker";
-import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
 type TimelineEntry = {
