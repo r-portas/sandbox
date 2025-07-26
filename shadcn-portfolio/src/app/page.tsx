@@ -5,6 +5,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Github, Mail, MapPin, ExternalLink } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   const name = faker.person.fullName();
@@ -103,24 +104,12 @@ export default function Home() {
             {projects.map((project, idx) => (
               <Card
                 key={idx}
-                className="group hover:shadow-lg transition-shadow duration-300"
+                className="group relative hover:shadow-lg transition-shadow duration-300"
               >
                 <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                      {project.name}
-                    </CardTitle>
-                    <Button variant="ghost" size="icon" asChild>
-                      <a
-                        href={project.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="opacity-0 group-hover:opacity-100 transition-opacity"
-                      >
-                        <ExternalLink className="h-4 w-4" />
-                      </a>
-                    </Button>
-                  </div>
+                  <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                    {project.name}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-muted-foreground">{project.description}</p>
@@ -136,6 +125,7 @@ export default function Home() {
                     ))}
                   </div>
                 </CardContent>
+                <Link href={project.url} className="absolute inset-0" />
               </Card>
             ))}
           </div>
