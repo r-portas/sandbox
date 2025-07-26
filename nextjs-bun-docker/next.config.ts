@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Build as a standalone application
+  output: "standalone",
 };
 
 export default nextConfig;
