@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { fontClassNames } from "./fonts";
-import { AppShell } from "@/components/app-shell";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -11,14 +10,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${fontClassNames} antialiased dark`}>
-      <body>
-        <AppShell>{children}</AppShell>
-      </body>
+    <html lang="en" className={`${fontClassNames} antialiased`}>
+      {children}
     </html>
   );
 }

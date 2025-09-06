@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Home, Inbox, Settings } from "lucide-react";
+import { Home, Star, Notebook } from "lucide-react";
 import { Sidebar, type Item } from "./ui/sidebar";
 
 // Menu items.
@@ -10,14 +10,14 @@ const items: Item[] = [
     icon: Home,
   },
   {
-    label: "Inbox",
-    href: "#",
-    icon: Inbox,
+    label: "Projects",
+    href: "/projects",
+    icon: Star,
   },
   {
-    label: "Settings",
-    href: "#",
-    icon: Settings,
+    label: "Resume",
+    href: "/resume",
+    icon: Notebook,
   },
 ];
 
