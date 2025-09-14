@@ -10,6 +10,7 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+
   try {
     const post = await getPostBySlug(slug);
     const formatter = new Intl.DateTimeFormat("en-US", {
