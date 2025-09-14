@@ -1,5 +1,5 @@
 import { readFile, readdir, stat } from "fs/promises";
-import { basename, extname, join } from "path";
+import { join } from "path";
 import z from "zod";
 import { getFrontmatter } from "next-mdx-remote-client/utils";
 
@@ -9,26 +9,40 @@ const PostSchema = z.object({
   title: z.string(),
   slug: z.string(),
   lastModified: z.date(),
+  source: z.string().optional(),
 });
 
 export async function listPosts() {
-  const posts = (await readdir(CONTENT_DIR))
+  const slugs = (await readdir(CONTENT_DIR))
     .filter((file) => file.endsWith(".mdx"))
-    .map((file) => join(CONTENT_DIR, file));
+    .map((file) => file.replace(".mdx", ""));
 
-  return Promise.all(
-    posts.map(async (post) => {
-      const source = await getSource(post);
-      const lastModified = await getLastModified(post);
-      const { frontmatter } = getFrontmatter(source);
-      return PostSchema.parse({
-        ...frontmatter,
-        lastModified,
-        // The filename, without extension
-        slug: basename(post, extname(post)),
-      });
-    }),
-  );
+  return await Promise.all(slugs.map((slug) => getPostBySlug(slug, false)));
+}
+
+export async function getPostBySlug(
+  slug: string,
+  includeSource: boolean = true,
+) {
+  const filename = join(CONTENT_DIR, `${slug}.mdx`);
+  const source = await getSource(filename);
+  const lastModified = await getLastModified(filename);
+  const { frontmatter, strippedSource } = getFrontmatter(source);
+
+  if (includeSource) {
+    return PostSchema.parse({
+      ...frontmatter,
+      lastModified,
+      slug,
+      source: strippedSource,
+    });
+  }
+
+  return PostSchema.parse({
+    ...frontmatter,
+    lastModified,
+    slug,
+  });
 }
 
 // #region Helpers
