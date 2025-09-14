@@ -8,6 +8,7 @@
 - Support for YAML front matter
 - Support for images in posts
 - Support for search
+- SEO friendly (sitemap, meta tags)
 
 ## Approach
 
