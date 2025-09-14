@@ -1,0 +1,41 @@
+---
+title: "Edge Case Rendering Tests"
+---
+
+Content crafted to expose rendering quirks.
+
+## Very Long Word
+
+SupercalifragilisticexpialidociousPseudoPneumoUltraMicroScopicSilicoVolcanoConiosis
+
+## Inline HTML
+
+<span style={{ fontStyle: 'italic' }}>This line uses inline HTML span with style prop (React style object not processed by markdown directly).</span>
+
+## Escaping & Entities
+
+Literal backticks: \`not code\` and HTML entities: &copy; &rarr; &amp; &lt; &gt;
+
+## Nested Lists
+
+1. Parent
+   - Child A
+     - Grandchild A1
+   - Child B
+2. Parent Two
+
+## Code Without Language
+
+```
+SELECT * FROM users WHERE id = 1;
+```
+
+## Short Lines & Breaks
+
+Line one  
+Line two (forced line break with two spaces)  
+Line three
+
+## Em Dash and Ellipsis
+
+Wait — what happened… we drifted.
