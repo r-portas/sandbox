@@ -1,0 +1,60 @@
+---
+title: "Comprehensive Code Showcase"
+---
+
+A post demonstrating different fenced code blocks, inline code, and language highlighting.
+
+## JavaScript Example
+
+```js
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+
+console.log(greet("World"));
+```
+
+## TypeScript Example
+
+```ts
+interface User {
+  id: string;
+  name: string;
+  email?: string;
+}
+
+const users: User[] = [
+  { id: "1", name: "Alice" },
+  { id: "2", name: "Bob", email: "bob@example.com" },
+];
+
+export function getNames(list: User[]): string[] {
+  return list.map(u => u.name);
+}
+```
+
+## Bash Script
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+
+NAME=${1:-World}
+echo "Hello $NAME"
+```
+
+## JSON Snippet
+
+```json
+{
+  "name": "example",
+  "version": 1,
+  "nested": { "enabled": true }
+}
+```
+
+## Inline Code
+
+You can call `getNames(users)` to retrieve all names.
+
+> Tip: Mix and match multiple languages to test styling.
