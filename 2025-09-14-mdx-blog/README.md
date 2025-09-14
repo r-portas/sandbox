@@ -19,6 +19,22 @@ The key logic is contained in the following files:
 - [`src/app/[slug]/page.tsx`](./src/app/[slug]/page.tsx): The individual blog post page that renders the MDX content.
 - [`src/app/lib/posts.ts`](./src/app/lib/posts.ts): Contains functions to read and parse MDX files, extract front matter, and validate it using Zod.
 
+### Using `next-mdx-remote-client`
+
+The key functions from `next-mdx-remote-client` are:
+
+- `getFrontmatter`: Parses the YAML frontmatter
+- `MDXRemote`: Renders the MDX content
+
+The rest is handled by the built-in `fs/promises` and `path` modules, the key ones are:
+
+- `fs.promises.readFile` for reading the raw MDX file
+- `fs.promises.readdir` for listing all files in the posts directory
+- `fs.promises.stat` for reading file metadata (like last modified date)
+- `path.join` for constructing file paths
+
+See [`src/app/lib/posts.ts`](./src/app/lib/posts.ts) for the full implementation.
+
 ## Appendix
 
 ### Choosing a library
@@ -49,6 +65,7 @@ The maintained version of next-mdx-remote, which works properly with app router,
 
 Pros:
 - Supports front matter out of the box
+- Doesn't require installing any other dependencies (e.g. gray-matter, mdx, etc.)
 
 Cons: 
 - A bit more work to setup
