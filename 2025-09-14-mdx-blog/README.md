@@ -38,6 +38,26 @@ See [`src/app/lib/posts.ts`](./src/app/lib/posts.ts) for the full implementation
 
 ## Appendix
 
+### Generating Mock Posts
+
+For performance testing or demo content you can generate large numbers of mock posts.
+
+Script: `scripts/generate-mock-posts.ts` (Bun / TypeScript).
+
+Default (creates 1,000 MDX files in `posts/`):
+
+```bash
+bun run mock:posts
+```
+
+Specify a count (e.g. 5,000):
+
+```bash
+bun run mock:posts --count 5000
+# or
+bun run mock:posts -n 5000
+```
+
 ### Choosing a library
 
 #### @next/mdx
