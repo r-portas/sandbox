@@ -1,8 +1,11 @@
 import { notFound } from "next/navigation";
-import { MDXRemote } from "next-mdx-remote-client/rsc";
+import { MDXRemote, type MDXComponents } from "next-mdx-remote-client/rsc";
+import rehypeShiki from "@shikijs/rehype";
 import { getPostBySlug } from "../lib/posts";
 import Link from "next/link";
 import { ChevronLeft, Calendar } from "lucide-react";
+
+const mdxComponents: MDXComponents = {};
 
 export default async function Page({
   params,
@@ -52,7 +55,17 @@ export default async function Page({
           {/* Content */}
           <main className="px-6 py-12">
             <article className="prose prose-lg prose-invert max-w-3xl mx-auto">
-              {post.source && <MDXRemote source={post.source} />}
+              {post.source && (
+                <MDXRemote
+                  source={post.source}
+                  components={mdxComponents}
+                  options={{
+                    mdxOptions: {
+                      rehypePlugins: [[rehypeShiki, { theme: "ayu-dark" }]],
+                    },
+                  }}
+                />
+              )}
             </article>
           </main>
         </div>
