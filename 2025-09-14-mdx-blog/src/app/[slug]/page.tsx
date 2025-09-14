@@ -1,9 +1,13 @@
 import { notFound } from "next/navigation";
 import { MDXRemote, type MDXComponents } from "next-mdx-remote-client/rsc";
 import rehypeShiki from "@shikijs/rehype";
-import { getPostBySlug } from "../lib/posts";
+import { getPostBySlug, listPosts } from "../lib/posts";
 import Link from "next/link";
 import { ChevronLeft, Calendar } from "lucide-react";
+
+export async function generateStaticParams() {
+  return await listPosts();
+}
 
 const mdxComponents: MDXComponents = {};
 
