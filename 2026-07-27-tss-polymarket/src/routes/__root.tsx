@@ -1,4 +1,9 @@
-import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import {
+  Outlet,
+  createRootRoute,
+  HeadContent,
+  Scripts,
+} from "@tanstack/react-router";
 
 import appCss from "@/styles.css?url";
 
@@ -13,7 +18,7 @@ export const Route = createRootRoute({
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: "tss-shadcn",
+        title: "tss-polymarket",
       },
     ],
     links: [
@@ -32,7 +37,7 @@ function RootDocument() {
       <head>
         <HeadContent />
       </head>
-      <body className="min-h-screen bg-background text-foreground">
+      <body className="min-h-screen bg-background text-foreground dark">
         <Outlet />
         <Scripts />
       </body>

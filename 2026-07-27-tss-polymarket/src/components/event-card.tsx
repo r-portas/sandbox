@@ -49,30 +49,53 @@ export function EventCard({ event }: { event: EventWithoutMetadata }) {
   if (markets.length <= 1) {
     const market = markets[0];
     const volume = formatVolume(event.metrics.volume);
+    const endDate = formatEndDate(event.schedule.endDate);
     const yesPrice = market ? formatPrice(market.outcomes.yes.price) : null;
     const noPrice = market ? formatPrice(market.outcomes.no.price) : null;
+    const yesPercent = market ? Number(market.outcomes.yes.price ?? Number.NaN) * 100 : Number.NaN;
 
     return (
-      <li className="flex items-center gap-4 rounded-lg border border-border bg-card p-4">
-        {event.icon ? (
-          <img src={event.icon} alt="" className="size-10 shrink-0 rounded-full object-cover" />
-        ) : null}
+      <li className="flex flex-col gap-4 rounded-lg border border-border bg-card p-4">
+        <div className="flex items-start gap-3">
+          {event.icon ? (
+            <img src={event.icon} alt="" className="size-11 shrink-0 rounded-full object-cover" />
+          ) : null}
 
-        <div className="flex min-w-0 flex-1 flex-col gap-1">
-          <p className="truncate font-medium">{event.title ?? market?.question}</p>
-          {volume ? <p className="text-sm text-muted-foreground">{volume} volume</p> : null}
+          <div className="flex min-w-0 flex-1 flex-col gap-1">
+            <p className="line-clamp-2 leading-snug font-medium">
+              {event.title ?? market?.question}
+            </p>
+            <p className="text-sm text-muted-foreground">
+              {[volume ? `${volume} volume` : null, endDate ? `Ends ${endDate}` : null]
+                .filter(Boolean)
+                .join(" · ")}
+            </p>
+          </div>
         </div>
 
-        <div className="flex shrink-0 items-center gap-2 text-sm font-medium">
+        {Number.isFinite(yesPercent) ? (
+          <div className="h-1.5 w-full overflow-hidden rounded-full bg-destructive/20">
+            <div
+              className="h-full rounded-full bg-emerald-500"
+              style={{ width: `${Math.min(100, Math.max(0, yesPercent))}%` }}
+            />
+          </div>
+        ) : null}
+
+        <div className="mt-auto flex items-center gap-2 text-sm font-medium">
           {market ? <TrendBadge change={market.prices.oneDayPriceChange} /> : null}
-          {yesPrice ? (
-            <span className="rounded-md bg-primary/10 px-2 py-1 text-primary">Yes {yesPrice}</span>
-          ) : null}
-          {noPrice ? (
-            <span className="rounded-md bg-destructive/10 px-2 py-1 text-destructive">
-              No {noPrice}
-            </span>
-          ) : null}
+          <div className="flex flex-1 items-center gap-2">
+            {yesPrice ? (
+              <span className="flex-1 rounded-md bg-primary/10 px-3 py-1.5 text-center text-primary">
+                Yes {yesPrice}
+              </span>
+            ) : null}
+            {noPrice ? (
+              <span className="flex-1 rounded-md bg-destructive/10 px-3 py-1.5 text-center text-destructive">
+                No {noPrice}
+              </span>
+            ) : null}
+          </div>
         </div>
       </li>
     );
