@@ -13,7 +13,11 @@ export const Route = createRootRoute({
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: "tss-shadcn",
+        name: "color-scheme",
+        content: "dark",
+      },
+      {
+        title: "markets.sh",
       },
     ],
     links: [
@@ -28,7 +32,7 @@ export const Route = createRootRoute({
 
 function RootDocument() {
   return (
-    <html>
+    <html className="dark">
       <head>
         <HeadContent />
       </head>
