@@ -62,9 +62,14 @@ Before editing files for a substantial task:
 
 ## User Interface
 
-- This project uses [shadcn/ui](https://ui.shadcn.com) components built on Tailwind CSS (v4) and Base UI.
+- This project uses shadcn/ui components built on Tailwind CSS (v4) and Base UI.
 - `components.json` configures the shadcn CLI (style, aliases, icon library).
 - Use `bun shadcn add <component>` to add new components.
 - Tailwind is configured CSS-first via `src/styles.css`
 - Tailwind class sorting is handled by Oxfmt's `sortTailwindcss` option in `.oxfmtrc.json`, so classes are reordered automatically on format.
 - **Do not use `<Button render={<a />} nativeButton={false} />` for links.** The Base UI `Button` component always applies `role="button"`, which overrides the semantic link role on `<a>` elements. Use `buttonVariants` with a plain `<a>` tag instead.
+
+# Database
+
+- This project uses Kysely for type-safe SQL queries, see [the documentation](https://kysely.dev/llms.txt)
+- This project uses Bun's built-in SQLite driver.
